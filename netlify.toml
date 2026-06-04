@@ -1,0 +1,11 @@
+# Netlify configuration for the FRESKA Ocean Goods site
+# The site is a static build located in the `freska/` directory.
+
+[build]
+  publish = "freska"
+  command = ""
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
