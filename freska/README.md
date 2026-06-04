@@ -46,13 +46,20 @@ sube `assets/hero.jpg` y pon `opacity: .6` en la regla `.hero__bg::after` de `st
 
 ## Personalización rápida
 
-Todos los tokens de marca están en `:root` dentro de `styles.css`:
+Todos los tokens de marca están en `:root` dentro de `styles.css`. La paleta se
+**extrajo del archivo oficial del logo** (`LOGOTIPO PRINCIPAL - FRESKA.ai`):
 
-| Token        | Valor       | Uso                          |
-|--------------|-------------|------------------------------|
-| `--orange`   | `#E8521C`   | Color de marca FRESKA        |
-| `--ink`      | `#161413`   | Texto principal              |
-| `--ice`      | `#F5F4F2`   | Fondos suaves                |
+| Token       | Valor       | Uso                                   |
+|-------------|-------------|---------------------------------------|
+| `--coral`   | `#EB6E42`   | Color primario de marca               |
+| `--blue`    | `#40739E`   | Secundario (océano) — héroe           |
+| `--rust`    | `#B35843`   | Acento — sección CTA                  |
+| `--cream`   | `#ECE9E1`   | Fondo de marca (no blanco puro)       |
+| `--ink`     | `#2B2620`   | Texto principal                       |
+
+El **logotipo oficial** vive en `assets/brand/` (versiones coral, crema y blanca,
+con fondo transparente, extraídas del .ai). Tipografía: Archivo (display),
+Inter (texto), Spline Sans Mono (etiquetas tipo "OCEAN GOODS").
 
 Los datos de producto (especie, FAO, origen, peso, precio) están en el array
 `PRODUCTS` de `script.js` — edítalos ahí.

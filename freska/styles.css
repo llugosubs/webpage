@@ -5,20 +5,32 @@
    ============================================================ */
 
 :root {
-  /* Brand */
-  --orange:      #E8521C;
-  --orange-deep: #C73F0E;
-  --orange-soft: #FCEEE6;
-  --ink:         #161413;
-  --ink-soft:    #4A4543;
-  --line:        #E7E2DE;
-  --paper:       #FFFFFF;
-  --ice:         #F5F4F2;
-  --ice-2:       #EDECEA;
+  /* Brand — extracted from official FRESKA logo artwork */
+  --coral:       #EB6E42;   /* primary */
+  --coral-deep:  #D2552B;
+  --coral-soft:  #F7DBCC;
+  --blue:        #40739E;   /* secondary — ocean */
+  --blue-deep:   #335B7E;
+  --blue-soft:   #DCE3EB;
+  --rust:        #B35843;   /* accent */
+  --cream:       #ECE9E1;   /* brand background */
+  --cream-2:     #E4E0D5;
+
+  /* Aliases kept so existing rules cascade to the new palette */
+  --orange:      var(--coral);
+  --orange-deep: var(--coral-deep);
+  --orange-soft: var(--coral-soft);
+  --ink:         #2B2620;
+  --ink-soft:    #5E564D;
+  --line:        #DAD5C9;
+  --paper:       #F3F1EB;   /* card paper, a touch lighter than cream */
+  --ice:         #E6E2D7;
+  --ice-2:       #DEDACE;
 
   /* Type */
   --display: "Archivo", system-ui, sans-serif;
   --body:    "Inter", system-ui, sans-serif;
+  --mono:    "Spline Sans Mono", ui-monospace, monospace;
   --script:  "Sacramento", cursive;
 
   /* Rhythm */
@@ -37,7 +49,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 92px; }
 body {
   font-family: var(--body);
   color: var(--ink);
-  background: var(--paper);
+  background: var(--cream);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -48,15 +60,15 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Typography helpers ---------- */
 .eyebrow {
-  font-family: var(--body);
-  font-weight: 600;
-  font-size: .78rem;
-  letter-spacing: .22em;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: .76rem;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--coral-deep);
   margin-bottom: 1rem;
 }
-.eyebrow--light { color: #FFD9C6; }
+.eyebrow--light { color: #F4C9B6; }
 
 .section__title {
   font-family: var(--display);
@@ -120,7 +132,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255,255,255,.82);
+  background: rgba(236,233,225,.85);
   backdrop-filter: saturate(1.4) blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
@@ -136,33 +148,17 @@ a { color: inherit; text-decoration: none; }
   gap: 1rem;
 }
 
-.brand { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: .45rem; line-height: 1; }
-.brand__mark {
-  grid-row: 1; grid-column: 1;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.55rem;
-  letter-spacing: -.02em;
-  color: var(--orange);
-}
-.brand__mark--light { color: #fff; }
-.brand__mark sup { font-size: .5em; top: -.7em; }
-.brand__sign {
-  grid-row: 1; grid-column: 2;
-  align-self: center;
-  font-family: var(--script);
-  font-size: 1.7rem;
-  color: var(--orange);
-  transform: translateY(2px);
-}
-.brand__sign--light { color: #FFB694; }
+.brand { display: flex; align-items: center; gap: .6rem; }
+.brand__logo { height: 30px; width: auto; }
 .brand__sub {
-  grid-row: 2; grid-column: 1 / -1;
-  font-size: .58rem;
-  letter-spacing: .24em;
+  font-family: var(--mono);
+  font-size: .56rem;
+  letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  margin-top: 1px;
+  padding-left: .6rem;
+  border-left: 1px solid var(--line);
+  align-self: center;
 }
 
 .nav__links { display: flex; gap: 2rem; }
@@ -210,8 +206,8 @@ a { color: inherit; text-decoration: none; }
 .hero__bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(120% 90% at 80% 10%, rgba(232,82,28,.55), transparent 60%),
-    linear-gradient(180deg, #1b1715 0%, #2a201b 45%, #3a261b 100%);
+    radial-gradient(120% 95% at 82% 8%, rgba(235,110,66,.45), transparent 58%),
+    linear-gradient(165deg, #4A7FAB 0%, #40739E 42%, #335B7E 100%);
 }
 .hero__bg::after {
   content: "";
@@ -332,7 +328,7 @@ a { color: inherit; text-decoration: none; }
 .story__media { min-height: 460px; }
 .story__photo {
   position: relative; height: 100%;
-  background: linear-gradient(135deg,#f3b48f,#E8521C 70%);
+  background: linear-gradient(140deg, #5C8AB4 0%, #40739E 45%, #B35843 100%);
   background-size: cover; background-position:center;
   display:flex; align-items:flex-end; padding: 2rem;
 }
@@ -341,8 +337,8 @@ a { color: inherit; text-decoration: none; }
   display:flex; flex-direction:column; line-height:1.3;
   box-shadow: var(--shadow-sm);
 }
-.story__badge-mark { font-family:var(--display); font-weight:800; color:var(--orange); font-size:1.3rem; }
-.story__badge span:not(.story__badge-mark) { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+.story__badge-logo { height: 22px; width:auto; margin-bottom:.4rem; }
+.story__badge span { font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
 .story__body { padding: clamp(2.5rem,6vw,5rem); display:flex; flex-direction:column; gap:1.1rem; align-items:flex-start; }
 .story__body p { color: var(--ink-soft); max-width: 46ch; }
 .story__list { list-style:none; display:grid; gap:.6rem; margin:.5rem 0 1rem; }
@@ -367,7 +363,7 @@ a { color: inherit; text-decoration: none; }
 .recipe__body p { font-size:.86rem; color:var(--ink-soft); }
 
 /* ---------- CTA ---------- */
-.cta { background: var(--ink); color:#fff; }
+.cta { background: var(--rust); color:#fff; }
 .cta__inner { max-width: 720px; margin:0 auto; text-align:center; padding: clamp(3.5rem,8vw,6.5rem) var(--pad); }
 .cta__title { font-family:var(--display); font-weight:800; font-size: clamp(2rem,5vw,3.2rem); letter-spacing:-.02em; line-height:1.05; }
 .cta__lead { color: rgba(255,255,255,.75); margin:.8rem 0 2rem; }
@@ -381,7 +377,8 @@ a { color: inherit; text-decoration: none; }
 .cta__note { margin-top:1rem; font-size:.85rem; color:#FFD9C6; min-height:1.2em; }
 
 /* ---------- FOOTER ---------- */
-.footer { background:#100d0c; color: rgba(255,255,255,.7); }
+.footer__logo { height: 30px; width: auto; margin-bottom: .2rem; }
+.footer { background:#221E19; color: rgba(255,255,255,.7); }
 .footer__inner { max-width: var(--maxw); margin:0 auto; padding: clamp(3rem,6vw,4.5rem) var(--pad); display:grid; grid-template-columns: 1.2fr 2fr; gap:2.5rem; }
 .footer__brand p { margin-top:.4rem; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; }
 .footer__cols { display:grid; grid-template-columns: repeat(3,1fr); gap:1.5rem; }
